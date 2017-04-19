@@ -1,0 +1,37 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cfu",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20170419134424",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "course",
+    "pagination": "no"
+}
