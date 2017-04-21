@@ -12,8 +12,8 @@ function addStudentController(entity, addStudentService){
     vm.student = entity;
     vm.datePickerOpenStatus = {};
     vm.openCalendar = openCalendar;
-    console.log("sono nel controller dello studente!");
     vm.save = save;
+    
     function save () {
             vm.isSaving = true;
             if (vm.student.id !== null) {
@@ -28,6 +28,7 @@ function addStudentController(entity, addStudentService){
             $uibModalInstance.close(result);
             vm.isSaving = false;*/
              console.log("Studente SALVATO!");
+             alert('studente');
         }
 
         function onSaveError () {
