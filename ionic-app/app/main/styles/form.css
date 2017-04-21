@@ -6756,5 +6756,6 @@ button.close {
 }
 /*# sourceMappingURL=bootstrap.css.map */
 
-
-
+#field_name, #field_surname, #field_dateOfBirth , #field_nationality, #field_studentNumber {
+    border: 1px solid #D2D2D2;
+}

@@ -4,10 +4,14 @@
     angular
         .module('main')
         .controller('addStudentController',addStudentController);
+    
     addStudentController.$inject=['entity','addStudentService'];
-function addStudentController(entity,addStudentService){
+
+function addStudentController(entity, addStudentService){
     var vm=this;
     vm.student = entity;
+    vm.datePickerOpenStatus = {};
+    vm.openCalendar = openCalendar;
     console.log("sono nel controller dello studente!");
     vm.save = save;
     function save () {
@@ -29,6 +33,10 @@ function addStudentController(entity,addStudentService){
         function onSaveError () {
             /*vm.isSaving = false;*/
             console.log("ancora cazzi!");
+        }
+        vm.datePickerOpenStatus.dateOfBirth = false;
+        function openCalendar (date) {
+            vm.datePickerOpenStatus[date] = true;
         }
 }
 
