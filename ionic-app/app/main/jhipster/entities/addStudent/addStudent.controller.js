@@ -5,9 +5,9 @@
         .module('main')
         .controller('addStudentController',addStudentController);
     
-    addStudentController.$inject=['$state','$scope', 'entity','addStudentService'];
+    addStudentController.$inject=['$window','$state','$scope', 'entity','addStudentService'];
 
-function addStudentController($state,$scope, entity, addStudentService){
+function addStudentController($window,$state,$scope, entity, addStudentService){
     var vm=this;
     vm.student = entity;
     vm.salvato = true;
@@ -15,6 +15,14 @@ function addStudentController($state,$scope, entity, addStudentService){
     vm.datePickerOpenStatus = {};
     vm.openCalendar = openCalendar;
     vm.save = save;
+    vm.ricalcola = ricalcola;
+    
+    function ricalcola(){
+        $window.location.reload();
+        $state.go('home');
+        
+    }
+    
     console.log("sono nel controller!");
     
     function save () {
@@ -33,6 +41,7 @@ function addStudentController($state,$scope, entity, addStudentService){
              vm.salvato = false;
              vm.avviso = true;
              console.log("Studente SALVATO!");
+             
         }
 
         function onSaveError () {
