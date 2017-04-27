@@ -1,7 +1,7 @@
 <ion-view view-title="Add Student">
 
     <ion-content>
-        <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+        <form ng-show = vm.salvato name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
 
             <div class="modal-body">
                 <jhi-alert-error></jhi-alert-error>
@@ -11,8 +11,8 @@
                            ng-model="vm.student.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="field_name">Name</label>
-                    <input type="text" class="form-control" name="name" id="field_name" ng-model="vm.student.name" required/>
+                    <label  class="control-label" for="field_name">Name</label>
+                    <input placeholder=" " type="text" class="form-control" name="name" id="field_name" ng-model="vm.student.name" required/>
                     <div ng-show="editForm.name.$invalid">
                         <p class="help-block" ng-show="editForm.name.$error.required">
                             This field is required.
@@ -84,5 +84,9 @@
                 </button>
             </div>
         </form>
+        <div style="text-align: center; font-size: 1.5em" class="alert alert-success" ng-show=vm.avviso>
+            Studente aggiunto correttamente ;)
+        </div>
+        <button ng-show = vm.avviso menu-close ui-sref="home" type="submit" ng-disabled="form.$invalid" class="button button-full button-positive">Back to home</button>
     </ion-content>
 </ion-view>
