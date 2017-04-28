@@ -57,6 +57,10 @@ public class Student implements Serializable {
                inverseJoinColumns = @JoinColumn(name="attends_id", referencedColumnName="id"))
     private Set<Course> attends = new HashSet<>();
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User user;
+
     public Long getId() {
         return id;
     }
@@ -166,6 +170,19 @@ public class Student implements Serializable {
 
     public void setAttends(Set<Course> courses) {
         this.attends = courses;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Student user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
