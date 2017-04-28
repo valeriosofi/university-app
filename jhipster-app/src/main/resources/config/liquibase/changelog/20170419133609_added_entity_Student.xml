@@ -57,6 +57,13 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/student.csv"
+                  separator=";"
+                  tableName="student">
+            <column name="activated" type="boolean"/>
+            <column name="created_date" type="timestamp"/>
+        </loadData>
 
         <addPrimaryKey columnNames="students_id, attends_id" tableName="student_attend"/>
         
