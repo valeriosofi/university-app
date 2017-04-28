@@ -25,31 +25,32 @@ function addStudentController($timeout, $window, $state, $scope, entity, addStud
             } else {
                 addStudentService.save(vm.student, onSaveSuccess, onSaveError);
             }
-        }
+    }
         
-        function onSaveSuccess (result) {
-           /* $scope.$emit('universityApp:studentUpdate', result);
-            $uibModalInstance.close(result);
-            vm.isSaving = false;*/
-            vm.salvato = false;
-            vm.avviso = true;
-            console.log("Studente SALVATO!");
-            $timeout(function () {
-                $window.location.reload();
-                vm.avviso = false;
-                $state.go('home');
-            }, 1500);
-             
-        }
+    function onSaveSuccess (result) {
+       /* $scope.$emit('universityApp:studentUpdate', result);
+        $uibModalInstance.close(result);
+        vm.isSaving = false;*/
+        vm.salvato = false;
+        vm.avviso = true;
+        console.log("Studente SALVATO!");
+        $timeout(function () {
+            $window.location.reload();
+            vm.avviso = false;
+            $state.go('home');
+            $window.location.reload();
+        }, 1500);
 
-        function onSaveError () {
-            /*vm.isSaving = false;*/
-            console.log("ancora cazzi!");
-        }
-        vm.datePickerOpenStatus.dateOfBirth = false;
-        function openCalendar (date) {
-            vm.datePickerOpenStatus[date] = true;
-        }
+    }
+
+    function onSaveError () {
+        /*vm.isSaving = false;*/
+        console.log("ancora cazzi!");
+    }
+    vm.datePickerOpenStatus.dateOfBirth = false;
+    function openCalendar (date) {
+        vm.datePickerOpenStatus[date] = true;
+    }
 }
 
 })();
