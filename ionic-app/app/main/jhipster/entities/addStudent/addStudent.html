@@ -1,20 +1,6 @@
 <ion-view view-title="Add Student">
     <ion-content>
         <div class="card">
-            <div class="item item-text-wrap" ng-show="vm.success || vm.error || vm.errorEmailExists">
-                <div class="alert alert-success" ng-show="vm.success" translate="settings.messages.success">
-                    <strong>Settings saved!</strong>
-                </div>
-
-                <div class="alert alert-danger" ng-show="vm.errorEmailExists" translate="settings.messages.error.emailexists">
-                    <strong>E-mail is already in use!</strong> Please choose another one.
-                </div>
-
-                <div class="alert alert-danger" ng-show="vm.error" translate="settings.messages.error.fail">
-                    <strong>An error has occurred!</strong> Settings could not be saved.
-                </div>
-
-            </div>
             <div class="list">
                 <form ng-show = vm.salvato name="form" role="form" novalidate ng-submit="vm.save()" show-validation>
 
@@ -24,17 +10,9 @@
                                ng-model="vm.student.name" required>
                     </label>
                     <div ng-show="form.firstName.$dirty && form.firstName.$invalid" class="text-center">
-                        <p class="help-block"
-                           ng-show="form.firstName.$error.required" translate="settings.messages.validate.firstname.required">
+                        <p style="color: red;" class="help-block"
+                           ng-show="form.firstName.$error.required">
                             Your first name is required.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.firstName.$error.minlength" translate="settings.messages.validate.firstname.minlength">
-                            Your first name is required to be at least 1 character.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.firstName.$error.maxlength" translate="settings.messages.validate.firstname.maxlength">
-                            Your first name cannot be longer than 50 characters.
                         </p>
                     </div>
 
@@ -44,17 +22,9 @@
                                ng-model="vm.student.surname" ng-minlength=1 ng-maxlength=50 required maxlength="50">
                     </label>
                     <div ng-show="form.lastName.$dirty && form.lastName.$invalid" class="text-center">
-                        <p class="help-block"
-                           ng-show="form.lastName.$error.required" translate="settings.messages.validate.lastname.required">
+                        <p style="color: red;" class="help-block"
+                           ng-show="form.lastName.$error.required">
                             Your last name is required.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.lastName.$error.minlength" translate="settings.messages.validate.lastname.minlength">
-                            Your last name is required to be at least 1 character.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.lastName.$error.maxlength" translate="settings.messages.validate.lastname.maxlength">
-                            Your last name cannot be longer than 50 characters.
                         </p>
                     </div>
                     
@@ -85,10 +55,8 @@
                     <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="button button-full button-positive">Save</button>
                 </form>
                     <div style="font-size: 1.5em" class="alert alert-success" ng-show=vm.avviso>
-                        <div>Studente aggiunto correttamente ;)</div>
-                    </div>
-                    <button ng-show=vm.avviso ng-click="vm.ricalcola()" menu-close type="submit" ng-disabled="form.$invalid" class="button button-full button-positive">Back to home</button>
-                    
+                        <div>Studente aggiunto correttamente</div>
+                    </div>   
             </div>
         </div>
     </ion-content>

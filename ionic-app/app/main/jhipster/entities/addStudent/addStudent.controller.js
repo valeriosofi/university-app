@@ -5,9 +5,9 @@
         .module('main')
         .controller('addStudentController',addStudentController);
     
-    addStudentController.$inject=['$window','$state','$scope', 'entity','addStudentService'];
+    addStudentController.$inject=['$timeout','$window','$state','$scope', 'entity','addStudentService'];
 
-function addStudentController($window,$state,$scope, entity, addStudentService){
+function addStudentController($timeout, $window, $state, $scope, entity, addStudentService){
     var vm=this;
     vm.student = entity;
     vm.salvato = true;
@@ -15,13 +15,6 @@ function addStudentController($window,$state,$scope, entity, addStudentService){
     vm.datePickerOpenStatus = {};
     vm.openCalendar = openCalendar;
     vm.save = save;
-    vm.ricalcola = ricalcola;
-    
-    function ricalcola(){
-        $window.location.reload();
-        $state.go('home');
-        
-    }
     
     console.log("sono nel controller!");
     
@@ -34,13 +27,18 @@ function addStudentController($window,$state,$scope, entity, addStudentService){
             }
         }
         
-         function onSaveSuccess (result) {
+        function onSaveSuccess (result) {
            /* $scope.$emit('universityApp:studentUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;*/
-             vm.salvato = false;
-             vm.avviso = true;
-             console.log("Studente SALVATO!");
+            vm.salvato = false;
+            vm.avviso = true;
+            console.log("Studente SALVATO!");
+            $timeout(function () {
+                $window.location.reload();
+                vm.avviso = false;
+                $state.go('home');
+            }, 1500);
              
         }
 
