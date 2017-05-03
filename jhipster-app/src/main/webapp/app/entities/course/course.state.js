@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/course',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER', 'ROLE_STUDENT'],
                 pageTitle: 'universityApp.course.home.title'
             },
             views: {

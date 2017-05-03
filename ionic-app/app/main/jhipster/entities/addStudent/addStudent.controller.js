@@ -5,19 +5,27 @@
         .module('main')
         .controller('addStudentController',addStudentController);
     
-    addStudentController.$inject=['$timeout','$window','$state','$scope', 'entity','addStudentService'];
+    addStudentController.$inject=['$timeout','$window','$state', 'Principal', '$scope', 'entity','addStudentService'];
 
-function addStudentController($timeout, $window, $state, $scope, entity, addStudentService){
+function addStudentController($timeout, $window, $state, Principal, $scope, entity, addStudentService){
     var vm=this;
+    
     vm.student = entity;
     vm.salvato = true;
     vm.avviso=false;
     vm.datePickerOpenStatus = {};
     vm.openCalendar = openCalendar;
     vm.save = save;
-    
+    getAccount();
     console.log("sono nel controller!");
     
+    
+    function getAccount() {
+        Principal.identity().then(function(account) {
+            vm.student.user = account;
+        });
+    }
+        
     function save () {
             vm.isSaving = true;
             if (vm.student.id !== null) {

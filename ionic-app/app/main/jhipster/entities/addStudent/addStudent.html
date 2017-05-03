@@ -1,6 +1,13 @@
 <ion-view view-title="Add Student">
     <ion-content>
         <div class="card">
+            <div class="modal-body">
+                <jhi-alert-error></jhi-alert-error>
+            <div class="form-group" ng-show="vm.student.id">
+                <label for="id" data-translate="global.field.id">ID</label>
+                <input type="text" class="form-control" id="id" name="id"
+                        ng-model="vm.student.id" readonly />
+            </div>
             <div class="list">
                 <form ng-show = vm.salvato name="form" role="form" novalidate ng-submit="vm.save()" show-validation>
 
@@ -51,6 +58,12 @@
                         <input input type="text" class="form-control" placeholder="Enter your student number" name="studentNumber" id="field_studentNumber"
                            ng-model="vm.student.studentNumber">
                     </label>
+                    
+                    <div class="form-group" ng-show="false">
+                        <label for="id" data-translate="global.field.user">User</label>
+                        <input type="text" class="form-control" id="user" name="user"
+                                ng-model="vm.student.user.id" readonly />
+                    </div>
 
                     <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="button button-full button-positive">Save</button>
                 </form>
