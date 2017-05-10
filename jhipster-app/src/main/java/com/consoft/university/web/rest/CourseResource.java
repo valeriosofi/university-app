@@ -100,7 +100,7 @@ public class CourseResource {
         log.debug("authorities: "+auth.getAuthorities().size());
         for(GrantedAuthority a : auth.getAuthorities()){
             log.debug(a.toString());
-            if(a.getAuthority().equals(AuthoritiesConstants.ADMIN)){
+            if(a.getAuthority().equals(AuthoritiesConstants.ADMIN) || a.getAuthority().equals(AuthoritiesConstants.ADMOFFICE) || a.getAuthority().equals(AuthoritiesConstants.USER)){
               return courseService.findAll();  
             }
         }
