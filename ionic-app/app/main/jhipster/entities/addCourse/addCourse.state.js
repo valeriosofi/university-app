@@ -23,6 +23,11 @@
                 }
             },
             resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('course');
+                        return $translate.refresh();
+                    }],
+                
                 entity: function () {
                     return {
                         code: null,

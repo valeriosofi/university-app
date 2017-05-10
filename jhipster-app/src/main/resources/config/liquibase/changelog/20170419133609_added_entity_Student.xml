@@ -69,5 +69,12 @@
         </loadData>
         <addPrimaryKey columnNames="students_id, attends_id" tableName="student_attend"/>
         
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/student_attend.csv"
+                  separator=";"
+                  tableName="student_attend">
+        </loadData>
+        
+        
     </changeSet>
 </databaseChangeLog>

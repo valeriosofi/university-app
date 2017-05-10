@@ -2,13 +2,17 @@ package com.consoft.university.service.impl;
 
 import com.consoft.university.service.CourseService;
 import com.consoft.university.domain.Course;
+import com.consoft.university.domain.Student;
 import com.consoft.university.repository.CourseRepository;
+import java.util.ArrayList;
+import java.util.HashSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Service Implementation for managing Course.
@@ -75,5 +79,17 @@ public class CourseServiceImpl implements CourseService{
     public void delete(Long id) {
         log.debug("Request to delete Course : {}", id);
         courseRepository.delete(id);
+    }
+    
+    @Override
+    public List<Course> findAllCoursesOfTheCurrentUser(){
+        log.debug("Request to get the current Student");
+        List<Student> result = courseRepository.findAllCoursesOfTheCurrentUser();
+        List<Course> parsedResult = new ArrayList<Course>();
+        Set<Course> myCourseSet = new HashSet<Course>();
+        myCourseSet = result.get(0).getAttends();
+        
+        myCourseSet.forEach(c -> parsedResult.add(c));
+        return parsedResult;
     }
 }

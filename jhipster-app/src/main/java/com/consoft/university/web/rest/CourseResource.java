@@ -15,6 +15,14 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.consoft.university.service.UserService;
+import org.springframework.security.core.GrantedAuthority;
+import java.util.ArrayList;
+import com.consoft.university.security.AuthoritiesConstants;
 
 /**
  * REST controller for managing Course.
@@ -84,7 +92,22 @@ public class CourseResource {
     @Timed
     public List<Course> getAllCourses() {
         log.debug("REST request to get all Courses");
-        return courseService.findAll();
+        List<Course> courseList = new ArrayList<Course>();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = auth.getName();
+        log.debug("authentication name: " + currentPrincipalName);
+        
+        log.debug("authorities: "+auth.getAuthorities().size());
+        for(GrantedAuthority a : auth.getAuthorities()){
+            log.debug(a.toString());
+            if(a.getAuthority().equals(AuthoritiesConstants.ADMIN)){
+              return courseService.findAll();  
+            }
+        }
+                
+        courseList=courseService.findAllCoursesOfTheCurrentUser();
+        return courseList;
+
     }
 
     /**
