@@ -8,37 +8,35 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('addCourse', {
+        $stateProvider.state('studyGroup', {
             parent: 'app',
-            url: '/addCourse',
+            url: '/studyGroup',
             data: {
-                authorities: ['ROLE_ADMOFFICE'],
-                pageTitle: 'addCourse.title'
+                authorities: ['ROLE_STUDENT'],
+                pageTitle: 'studyGroup.title'
             },
             views: {
                 'pageContent': {
-                    templateUrl: 'main/jhipster/entities/addCourse/addCourse.html',
-                    controller: 'addCourseController',
+                    templateUrl: 'main/jhipster/account/studyGroup/studyGroup.html',
+                    controller: 'studyGroupController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('course');
-                        return $translate.refresh();
-                    }],
-                
+                    $translatePartialLoader.addPart('studyGroup');
+                    $translatePartialLoader.addPart('global');
+                    return $translate.refresh();
+                }],
                 entity: function () {
                     return {
-                        code: null,
                         name: null,
-                        description: null,
-                        cfu: null,
-                        duration: null,
+                        numMembers: null,
                         id: null
                     };
                 }
             }
         });
     }
+    
 })();
