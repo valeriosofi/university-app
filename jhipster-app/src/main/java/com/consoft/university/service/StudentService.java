@@ -37,4 +37,8 @@ public interface StudentService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    List<Student> findByUserIsCurrentUser();
 }
+
+
