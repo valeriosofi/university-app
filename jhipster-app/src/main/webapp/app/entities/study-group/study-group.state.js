@@ -9,55 +9,53 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('student', {
+        .state('study-group', {
             parent: 'entity',
-            url: '/student',
+            url: '/study-group',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'universityApp.student.home.title'
+                pageTitle: 'universityApp.studyGroup.home.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/student/students.html',
-                    controller: 'StudentController',
+                    templateUrl: 'app/entities/study-group/study-groups.html',
+                    controller: 'StudyGroupController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('student');
-                    $translatePartialLoader.addPart('sex');
+                    $translatePartialLoader.addPart('studyGroup');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
             }
         })
-        .state('student-detail', {
-            parent: 'student',
-            url: '/student/{id}',
+        .state('study-group-detail', {
+            parent: 'study-group',
+            url: '/study-group/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'universityApp.student.detail.title'
+                pageTitle: 'universityApp.studyGroup.detail.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/student/student-detail.html',
-                    controller: 'StudentDetailController',
+                    templateUrl: 'app/entities/study-group/study-group-detail.html',
+                    controller: 'StudyGroupDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('student');
-                    $translatePartialLoader.addPart('sex');
+                    $translatePartialLoader.addPart('studyGroup');
                     return $translate.refresh();
                 }],
-                entity: ['$stateParams', 'Student', function($stateParams, Student) {
-                    return Student.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'StudyGroup', function($stateParams, StudyGroup) {
+                    return StudyGroup.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'student',
+                        name: $state.current.name || 'study-group',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -65,22 +63,22 @@
                 }]
             }
         })
-        .state('student-detail.edit', {
-            parent: 'student-detail',
+        .state('study-group-detail.edit', {
+            parent: 'study-group-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/student/student-dialog.html',
-                    controller: 'StudentDialogController',
+                    templateUrl: 'app/entities/study-group/study-group-dialog.html',
+                    controller: 'StudyGroupDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Student', function(Student) {
-                            return Student.get({id : $stateParams.id}).$promise;
+                        entity: ['StudyGroup', function(StudyGroup) {
+                            return StudyGroup.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -90,16 +88,16 @@
                 });
             }]
         })
-        .state('student.new', {
-            parent: 'student',
+        .state('study-group.new', {
+            parent: 'study-group',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/student/student-dialog.html',
-                    controller: 'StudentDialogController',
+                    templateUrl: 'app/entities/study-group/study-group-dialog.html',
+                    controller: 'StudyGroupDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -107,66 +105,62 @@
                         entity: function () {
                             return {
                                 name: null,
-                                surname: null,
-                                sex: null,
-                                dateOfBirth: null,
-                                nationality: null,
-                                studentNumber: null,
+                                numMembers: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('student', null, { reload: 'student' });
+                    $state.go('study-group', null, { reload: 'study-group' });
                 }, function() {
-                    $state.go('student');
+                    $state.go('study-group');
                 });
             }]
         })
-        .state('student.edit', {
-            parent: 'student',
+        .state('study-group.edit', {
+            parent: 'study-group',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/student/student-dialog.html',
-                    controller: 'StudentDialogController',
+                    templateUrl: 'app/entities/study-group/study-group-dialog.html',
+                    controller: 'StudyGroupDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Student', function(Student) {
-                            return Student.get({id : $stateParams.id}).$promise;
+                        entity: ['StudyGroup', function(StudyGroup) {
+                            return StudyGroup.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('student', null, { reload: 'student' });
+                    $state.go('study-group', null, { reload: 'study-group' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('student.delete', {
-            parent: 'student',
+        .state('study-group.delete', {
+            parent: 'study-group',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/student/student-delete-dialog.html',
-                    controller: 'StudentDeleteController',
+                    templateUrl: 'app/entities/study-group/study-group-delete-dialog.html',
+                    controller: 'StudyGroupDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Student', function(Student) {
-                            return Student.get({id : $stateParams.id}).$promise;
+                        entity: ['StudyGroup', function(StudyGroup) {
+                            return StudyGroup.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('student', null, { reload: 'student' });
+                    $state.go('study-group', null, { reload: 'study-group' });
                 }, function() {
                     $state.go('^');
                 });

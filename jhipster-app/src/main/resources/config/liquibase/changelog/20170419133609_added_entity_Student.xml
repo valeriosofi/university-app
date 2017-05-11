@@ -48,6 +48,10 @@
             <column name="user_id" type="bigint">
                 <constraints unique="true" nullable="true" />
             </column>
+            <column name="study_group_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
@@ -59,7 +63,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        
+
         <loadData encoding="UTF-8"
                   file="config/liquibase/student.csv"
                   separator=";"

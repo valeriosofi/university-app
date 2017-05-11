@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "student",
+            "otherEntityName": "student",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "studyGroup"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numMembers",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 0,
+            "fieldValidateRulesMax": "30"
+        }
+    ],
+    "changelogDate": "20170511075156",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "study_group",
+    "pagination": "no"
+}

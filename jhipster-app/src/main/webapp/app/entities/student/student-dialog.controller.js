@@ -5,11 +5,11 @@
         .module('universityApp')
         .controller('StudentDialogController', StudentDialogController);
 
-    StudentDialogController.$inject = ['$timeout', '$scope', '$stateParams', 'Principal', '$uibModalInstance', '$q', 'entity', 'Student', 'Course', 'User'];
+    StudentDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Student', 'Course', 'User', 'StudyGroup'];
 
-    function StudentDialogController ($timeout, $scope, $stateParams, Principal, $uibModalInstance, $q, entity, Student, Course, User) {
+    function StudentDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Student, Course, User, StudyGroup) {
         var vm = this;
-        
+
         vm.student = entity;
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
@@ -17,17 +17,11 @@
         vm.save = save;
         vm.courses = Course.query();
         vm.users = User.query();
-        getAccount();
+        vm.studygroups = StudyGroup.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
-        
-        function getAccount() {
-            Principal.identity().then(function(account) {
-                vm.student.user = account;
-            });
-        }
 
         function clear () {
             $uibModalInstance.dismiss('cancel');

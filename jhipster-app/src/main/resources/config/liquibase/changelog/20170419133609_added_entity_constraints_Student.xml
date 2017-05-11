@@ -25,5 +25,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
+        <addForeignKeyConstraint baseColumnNames="study_group_id"
+                                 baseTableName="student"
+                                 constraintName="fk_student_study_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="study_group"/>
+
     </changeSet>
 </databaseChangeLog>

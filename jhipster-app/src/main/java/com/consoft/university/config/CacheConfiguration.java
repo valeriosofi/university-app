@@ -43,6 +43,8 @@ public class CacheConfiguration {
             cm.createCache(com.consoft.university.domain.Student.class.getName(), jcacheConfiguration);
             cm.createCache(com.consoft.university.domain.Course.class.getName(), jcacheConfiguration);
             cm.createCache(com.consoft.university.domain.Student.class.getName() + ".attends", jcacheConfiguration);
+            cm.createCache(com.consoft.university.domain.StudyGroup.class.getName(), jcacheConfiguration);
+            cm.createCache(com.consoft.university.domain.StudyGroup.class.getName() + ".students", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

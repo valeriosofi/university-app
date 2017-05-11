@@ -27,6 +27,7 @@
                     <th><span data-translate="universityApp.student.studentNumber">Student Number</span></th>
                     <th><span data-translate="universityApp.student.attend">Attend</span></th>
                     <th><span data-translate="universityApp.student.user">User</span></th>
+                    <th><span data-translate="universityApp.student.studyGroup">Study Group</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -46,6 +47,9 @@
                     </td>
                     <td>
                         {{student.user.id}}
+                    </td>
+                    <td>
+                        <a ui-sref="study-group-detail({id:student.studyGroup.id})">{{student.studyGroup.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

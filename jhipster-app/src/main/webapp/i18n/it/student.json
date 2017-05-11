@@ -22,7 +22,8 @@
             "nationality": "Nationality",
             "studentNumber": "Student Number",
             "attend": "Attend",
-            "user": "User"
+            "user": "User",
+            "studyGroup": "Study Group"
         }
     }
 }

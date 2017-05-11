@@ -61,6 +61,9 @@ public class Student implements Serializable {
     @JoinColumn(unique = true)
     private User user;
 
+    @ManyToOne
+    private StudyGroup studyGroup;
+
     public Long getId() {
         return id;
     }
@@ -183,6 +186,19 @@ public class Student implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public StudyGroup getStudyGroup() {
+        return studyGroup;
+    }
+
+    public Student studyGroup(StudyGroup studyGroup) {
+        this.studyGroup = studyGroup;
+        return this;
+    }
+
+    public void setStudyGroup(StudyGroup studyGroup) {
+        this.studyGroup = studyGroup;
     }
 
     @Override

@@ -1,0 +1,23 @@
+{
+    "universityApp": {
+        "studyGroup" : {
+            "home": {
+                "title": "StudyGroups",
+                "createLabel": "Genera un nuovo Study Group",
+                "createOrEditLabel": "Genera o modifica un Study Group"
+            },
+            "created": "&Egrave; stato generato un nuovo Study Group con identificatore {{ param }}",
+            "updated": "&Egrave; stato aggiornato Study Group identificato da {{ param }}",
+            "deleted": "&Egrave; stato eliminato Study Group con identificatore {{ param }}",
+            "delete": {
+                "question": "Sei sicuro di volere eliminare Study Group {{ id }}?"
+            },
+            "detail": {
+                "title": "Study Group"
+            },
+            "name": "Name",
+            "numMembers": "Num Members",
+            "student": "Student"
+        }
+    }
+}
