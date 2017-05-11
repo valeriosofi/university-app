@@ -2,25 +2,15 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipName": "student",
-            "otherEntityName": "student",
-            "relationshipType": "one-to-many",
-            "otherEntityRelationshipName": "studyGroup"
-        },
-        {
             "relationshipName": "booking",
             "otherEntityName": "booking",
             "relationshipType": "one-to-many",
-            "otherEntityRelationshipName": "studyGroup"
+            "otherEntityRelationshipName": "room"
         }
     ],
     "fields": [
         {
-            "fieldName": "name",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "numMembers",
+            "fieldName": "capacity",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required",
@@ -28,12 +18,12 @@
                 "max"
             ],
             "fieldValidateRulesMin": 0,
-            "fieldValidateRulesMax": "30"
+            "fieldValidateRulesMax": "1000"
         }
     ],
-    "changelogDate": "20170511075156",
+    "changelogDate": "20170511092946",
     "dto": "no",
     "service": "serviceImpl",
-    "entityTableName": "study_group",
+    "entityTableName": "room",
     "pagination": "no"
 }

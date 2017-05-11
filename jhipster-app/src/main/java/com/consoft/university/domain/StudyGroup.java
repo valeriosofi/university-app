@@ -39,6 +39,11 @@ public class StudyGroup implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Student> students = new HashSet<>();
 
+    @OneToMany(mappedBy = "studyGroup")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Booking> bookings = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -84,18 +89,43 @@ public class StudyGroup implements Serializable {
 
     public StudyGroup addStudent(Student student) {
         this.students.add(student);
-//        student.setStudyGroup(this);
+        student.setStudyGroup(this);
         return this;
     }
 
     public StudyGroup removeStudent(Student student) {
         this.students.remove(student);
-  //      student.setStudyGroup(null);
+        student.setStudyGroup(null);
         return this;
     }
 
     public void setStudents(Set<Student> students) {
         this.students = students;
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public StudyGroup bookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+        return this;
+    }
+
+    public StudyGroup addBooking(Booking booking) {
+        this.bookings.add(booking);
+        booking.setStudyGroup(this);
+        return this;
+    }
+
+    public StudyGroup removeBooking(Booking booking) {
+        this.bookings.remove(booking);
+        booking.setStudyGroup(null);
+        return this;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     @Override

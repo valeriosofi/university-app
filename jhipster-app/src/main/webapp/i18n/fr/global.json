@@ -10,6 +10,8 @@
                 "student": "Student",
                 "course": "Course",
                 "studyGroup": "Study Group",
+                "booking": "Booking",
+                "room": "Room",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

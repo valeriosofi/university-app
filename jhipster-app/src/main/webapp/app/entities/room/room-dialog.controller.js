@@ -3,17 +3,16 @@
 
     angular
         .module('universityApp')
-        .controller('StudyGroupDialogController', StudyGroupDialogController);
+        .controller('RoomDialogController', RoomDialogController);
 
-    StudyGroupDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'StudyGroup', 'Student', 'Booking'];
+    RoomDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Room', 'Booking'];
 
-    function StudyGroupDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, StudyGroup, Student, Booking) {
+    function RoomDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Room, Booking) {
         var vm = this;
 
-        vm.studyGroup = entity;
+        vm.room = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.students = Student.query();
         vm.bookings = Booking.query();
 
         $timeout(function (){
@@ -26,15 +25,15 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.studyGroup.id !== null) {
-                StudyGroup.update(vm.studyGroup, onSaveSuccess, onSaveError);
+            if (vm.room.id !== null) {
+                Room.update(vm.room, onSaveSuccess, onSaveError);
             } else {
-                StudyGroup.save(vm.studyGroup, onSaveSuccess, onSaveError);
+                Room.save(vm.room, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess (result) {
-            $scope.$emit('universityApp:studyGroupUpdate', result);
+            $scope.$emit('universityApp:roomUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

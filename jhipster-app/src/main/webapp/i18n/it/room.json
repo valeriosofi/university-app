@@ -1,0 +1,22 @@
+{
+    "universityApp": {
+        "room" : {
+            "home": {
+                "title": "Rooms",
+                "createLabel": "Genera un nuovo Room",
+                "createOrEditLabel": "Genera o modifica un Room"
+            },
+            "created": "&Egrave; stato generato un nuovo Room con identificatore {{ param }}",
+            "updated": "&Egrave; stato aggiornato Room identificato da {{ param }}",
+            "deleted": "&Egrave; stato eliminato Room con identificatore {{ param }}",
+            "delete": {
+                "question": "Sei sicuro di volere eliminare Room {{ id }}?"
+            },
+            "detail": {
+                "title": "Room"
+            },
+            "capacity": "Capacity",
+            "booking": "Booking"
+        }
+    }
+}
