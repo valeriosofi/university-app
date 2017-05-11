@@ -18,7 +18,8 @@
             "date": "Date",
             "timeSlot": "Time Slot",
             "studyGroup": "Study Group",
-            "room": "Room"
+            "room": "Room",
+            "course": "Course"
         }
     }
 }

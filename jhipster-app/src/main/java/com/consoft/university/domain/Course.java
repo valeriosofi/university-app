@@ -1,11 +1,14 @@
 package com.consoft.university.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -38,6 +41,11 @@ public class Course implements Serializable {
 
     @Column(name = "duration")
     private Double duration;
+
+    @OneToMany(mappedBy = "course")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Booking> bookings = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -110,6 +118,31 @@ public class Course implements Serializable {
 
     public void setDuration(Double duration) {
         this.duration = duration;
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public Course bookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+        return this;
+    }
+
+    public Course addBooking(Booking booking) {
+        this.bookings.add(booking);
+        booking.setCourse(this);
+        return this;
+    }
+
+    public Course removeBooking(Booking booking) {
+        this.bookings.remove(booking);
+        booking.setCourse(null);
+        return this;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     @Override

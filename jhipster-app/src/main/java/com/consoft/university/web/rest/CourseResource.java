@@ -101,10 +101,10 @@ public class CourseResource {
         for(GrantedAuthority a : auth.getAuthorities()){
             log.debug(a.toString());
             if(a.getAuthority().equals(AuthoritiesConstants.ADMIN)){
-              return courseService.findAll();  
-            }
+        return courseService.findAll();
+    }
         }
-                
+
         courseList=courseService.findAllCoursesOfTheCurrentUser();
         return courseList;
 

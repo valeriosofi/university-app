@@ -1,6 +1,13 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "booking",
+            "otherEntityName": "booking",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "course"
+        }
+    ],
     "fields": [
         {
             "fieldName": "code",

@@ -37,6 +37,9 @@ public class Booking implements Serializable {
     @ManyToOne
     private Room room;
 
+    @ManyToOne
+    private Course course;
+
     public Long getId() {
         return id;
     }
@@ -95,6 +98,19 @@ public class Booking implements Serializable {
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public Booking course(Course course) {
+        this.course = course;
+        return this;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     @Override

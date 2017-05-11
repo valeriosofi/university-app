@@ -7,7 +7,7 @@ import java.util.List;
  * Service Interface for managing Course.
  */
 public interface CourseService {
-    
+
     List<Course> findAllCoursesOfTheCurrentUser();
     /**
      * Save a course.

@@ -91,5 +91,5 @@ public class CourseServiceImpl implements CourseService{
         
         myCourseSet.forEach(c -> parsedResult.add(c));
         return parsedResult;
-    }
+}
 }

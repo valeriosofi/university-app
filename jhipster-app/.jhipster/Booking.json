@@ -12,6 +12,12 @@
             "otherEntityName": "room",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "course",
+            "otherEntityName": "course",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "fields": [
