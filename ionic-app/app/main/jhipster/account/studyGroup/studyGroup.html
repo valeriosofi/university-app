@@ -7,21 +7,23 @@
                 </span>
         </button>
         <div ng-show="vm.salvato" class="card">
-            <div class="modal-body">
-                <div style="font-size: 1.5em; padding: 15px; font-weight: bold;">Join an existing group:</div>
-                <div style="margin-top: 20px;" class="form-group">
-                    <label class = "item item-input item-select">
-                        <div class = "input-label">
-                           Select a Study Group:
-                        </div>
+            <form ng-submit="vm.save()" ng-show = vm.salvato name="form" role="form" novalidate show-validation>
+                <div class="modal-body">
+                    <div style="font-size: 1.5em; padding: 15px; font-weight: bold;">Join an existing group:</div>
+                    <div style="margin-top: 20px;" class="form-group">
+                        <label class = "item item-input item-select">
+                            <div class = "input-label">
+                               Select a Study Group:
+                            </div>
 
-                        <select class="form-control" id="field_studyGroup" name="studyGroup" ng-model="vm.student.studyGroup" ng-options="studyGroup as studyGroup.name for studyGroup in vm.studygroups track by studyGroup.id">
-                           <option value=""></option>
-                        </select>
-                    </label>
+                            <select class="form-control" id="field_studyGroup" name="studyGroup" ng-model="vm.student.studyGroup" ng-options="studyGroup as studyGroup.name for studyGroup in vm.studygroups track by studyGroup.id">
+                               <option value=""></option>
+                            </select>
+                        </label>
+                    </div>
+                    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="button button-full button-positive">Save</button>
                 </div>
-                <button type="submit" ng-click="vm.save()" ng-disabled="editForm.$invalid || vm.isSaving" class="button button-full button-positive">Save</button>
-            </div>
+            </form>
         </div>
         <div style="font-size: 1.5em" class="alert alert-success" ng-show=vm.avviso>
             <div>Gruppo cambiato correttamente!</div>
