@@ -5,9 +5,9 @@
         .module('main')
         .controller('studyGroupDialogController', studyGroupDialogController);
 
-    studyGroupDialogController.$inject = ['$uibModalInstance','$timeout', '$scope', '$stateParams', 'entity', 'studyGroupService','$window','$state',];
+    studyGroupDialogController.$inject = ['$uibModalInstance','$timeout', '$scope', '$stateParams', 'entity', 'studyGroupService','$window','$state'];
 
-    function studyGroupDialogController ($uibModalInstance,  $timeout, $scope, $stateParams, entity, studyGroupService, $window, $state,) {
+    function studyGroupDialogController ($uibModalInstance,  $timeout, $scope, $stateParams, entity, studyGroupService, $window, $state) {
         var vm = this;
 
         vm.studyGroup = entity;

@@ -1,12 +1,12 @@
 <ion-view view-title="Create A Study Group">
     <ion-content>
        
-        <button style=" background: #00CC99; margin-top:20px; margin-left:10px;" class="button button-positive" ui-sref="studyGroup.new">
+        <button ng-show="vm.salvato" style=" background: #00CC99; margin-top:20px; margin-left:10px;" class="button button-positive" ui-sref="studyGroup.new">
                 <span>
                     Create a new Group
                 </span>
         </button>
-        <div class="card">
+        <div ng-show="vm.salvato" class="card">
             <div class="modal-body">
                 <div style="font-size: 1.5em; padding: 15px; font-weight: bold;">Join an existing group:</div>
                 <div style="margin-top: 20px;" class="form-group">
@@ -23,5 +23,8 @@
                 <button type="submit" ng-click="vm.save()" ng-disabled="editForm.$invalid || vm.isSaving" class="button button-full button-positive">Save</button>
             </div>
         </div>
+        <div style="font-size: 1.5em" class="alert alert-success" ng-show=vm.avviso>
+            <div>Gruppo cambiato correttamente!</div>
+        </div>   
     </ion-content>
 </ion-view>
