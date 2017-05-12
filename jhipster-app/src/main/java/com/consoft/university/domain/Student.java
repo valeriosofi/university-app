@@ -50,7 +50,7 @@ public class Student implements Serializable {
     @Column(name = "student_number")
     private String studentNumber;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "student_attend",
                joinColumns = @JoinColumn(name="students_id", referencedColumnName="id"),
