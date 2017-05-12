@@ -1,10 +1,27 @@
 <ion-view view-title="Create A Study Group">
     <ion-content>
        
-        <button style="margin-top:20px; margin-left:10px;" class="button button-positive" ui-sref="studyGroup.new">
+        <button style=" background: #00CC99; margin-top:20px; margin-left:10px;" class="button button-positive" ui-sref="studyGroup.new">
                 <span>
                     Create a new Group
                 </span>
         </button>
+        <div class="card">
+            <div class="modal-body">
+                <div style="font-size: 1.5em; padding: 15px; font-weight: bold;">Join an existing group:</div>
+                <div style="margin-top: 20px;" class="form-group">
+                    <label class = "item item-input item-select">
+                        <div class = "input-label">
+                           Select a Study Group:
+                        </div>
+
+                        <select class="form-control" id="field_studyGroup" name="studyGroup" ng-model="vm.student.studyGroup" ng-options="studyGroup as studyGroup.name for studyGroup in vm.studygroups track by studyGroup.id">
+                           <option value=""></option>
+                        </select>
+                    </label>
+                </div>
+                <button type="submit" ng-click="vm.save()" ng-disabled="editForm.$invalid || vm.isSaving" class="button button-full button-positive">Save</button>
+            </div>
+        </div>
     </ion-content>
 </ion-view>
