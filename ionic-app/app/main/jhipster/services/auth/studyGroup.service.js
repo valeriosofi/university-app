@@ -7,7 +7,7 @@
     studyGroupService.$inject = ['$resource', 'Config'];
 
     function studyGroupService ($resource, Config) {
-        var resourceUrl =  Config.ENV.SERVER_URL + 'api/studyGroup';
+        var resourceUrl =  Config.ENV.SERVER_URL + 'api/study-groups';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
