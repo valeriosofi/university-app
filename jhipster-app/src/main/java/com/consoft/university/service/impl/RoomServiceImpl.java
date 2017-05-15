@@ -76,4 +76,13 @@ public class RoomServiceImpl implements RoomService{
         log.debug("Request to delete Room : {}", id);
         roomRepository.delete(id);
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<Room> findAllFreeRooms() {
+        log.debug("Request to get all Rooms");
+        List<Room> result = roomRepository.findAllFreeRooms();
+
+        return result;
+    }
 }

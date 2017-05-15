@@ -84,7 +84,7 @@ public class RoomResource {
     @Timed
     public List<Room> getAllRooms() {
         log.debug("REST request to get all Rooms");
-        return roomService.findAll();
+        return roomService.findAllFreeRooms();
     }
 
     /**

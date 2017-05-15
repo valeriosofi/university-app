@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/study-group',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER', 'ROLE_STUDENT'],
                 pageTitle: 'universityApp.studyGroup.home.title'
             },
             views: {
