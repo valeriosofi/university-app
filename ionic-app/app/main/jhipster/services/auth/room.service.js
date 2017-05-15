@@ -10,7 +10,7 @@
         var resourceUrl =  'api/rooms/:id';
 
         return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true},
+            'query': { method: 'GET', params: {'timeSlot':'8.30-10.00', 'date':'1995-05-14'}, isArray: true},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

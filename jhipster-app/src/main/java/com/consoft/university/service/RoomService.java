@@ -1,6 +1,7 @@
 package com.consoft.university.service;
 
 import com.consoft.university.domain.Room;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -38,5 +39,5 @@ public interface RoomService {
      */
     void delete(Long id);
     
-    List<Room> findAllFreeRooms();
+    List<Room> findAllFreeRooms(String timeSlot, LocalDate date);
 }

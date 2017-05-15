@@ -21,7 +21,7 @@
         vm.avviso = false;
         
         findGroup();
-        
+            
         function findGroup() {
             addStudentService.query(function(result) {
                 vm.student = result[0];

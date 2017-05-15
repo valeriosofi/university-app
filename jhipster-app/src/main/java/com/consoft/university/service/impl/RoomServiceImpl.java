@@ -3,6 +3,7 @@ package com.consoft.university.service.impl;
 import com.consoft.university.service.RoomService;
 import com.consoft.university.domain.Room;
 import com.consoft.university.repository.RoomRepository;
+import java.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -79,9 +80,9 @@ public class RoomServiceImpl implements RoomService{
     
     @Override
     @Transactional(readOnly = true)
-    public List<Room> findAllFreeRooms() {
+    public List<Room> findAllFreeRooms(String timeSlot, LocalDate date) {
         log.debug("Request to get all Rooms");
-        List<Room> result = roomRepository.findAllFreeRooms();
+        List<Room> result = roomRepository.findAllFreeRooms(timeSlot, date);
 
         return result;
     }

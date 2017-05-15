@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,9 +83,9 @@ public class RoomResource {
      */
     @GetMapping("/rooms")
     @Timed
-    public List<Room> getAllRooms() {
+    public List<Room> getAllRooms(@RequestParam String timeSlot, @RequestParam LocalDate date) {
         log.debug("REST request to get all Rooms");
-        return roomService.findAllFreeRooms();
+        return roomService.findAllFreeRooms(timeSlot, date);
     }
 
     /**
