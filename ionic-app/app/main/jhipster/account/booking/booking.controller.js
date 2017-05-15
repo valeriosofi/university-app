@@ -52,7 +52,6 @@
             if (vm.booking.id !== null) {
                 bookingService.update(vm.booking, onSaveSuccess, onSaveError);
             } else {
-                console.log(vm.booking);
                 bookingService.save(vm.booking, onSaveSuccess, onSaveError);
             }
         }
@@ -62,7 +61,6 @@
             vm.avviso = true;
             $timeout(function () {
                 $window.location.reload();
-                vm.avviso = false;
             }, 1500);
             
         }

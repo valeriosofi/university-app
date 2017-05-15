@@ -73,12 +73,12 @@
                 </select>
             </label>
             <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="button button-full button-positive">Save</button>
-            <button type="submit" ng-click="vm.back()" class="button button-full button-positive">Back</button>
         </form>
-        <div style="font-size: 1.5em" class="alert alert-success" ng-show=vm.avviso>
-            <div>Prenotazione effettuata!</div>
-        </div> 
+        <button type="submit" ng-click="vm.back()" class="button button-full button-positive">Back</button>
     </div>
+    <div style="font-size: 1.5em" class="alert alert-success" ng-show=vm.avviso>
+        <div>Prenotazione effettuata!</div>
+    </div> 
     
     </ion-content>
 </ion-view>
