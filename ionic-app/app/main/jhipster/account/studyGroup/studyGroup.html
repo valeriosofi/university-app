@@ -1,4 +1,4 @@
-<ion-view view-title="Create A Study Group">
+<ion-view view-title="Study Group">
     <ion-content>
        
         <button ng-show="vm.salvato" style=" background: #00CC99; margin-top:20px; margin-left:10px;" class="button button-positive" ui-sref="studyGroup.new">
@@ -7,10 +7,12 @@
                 </span>
         </button>
         <div ng-show="vm.salvato" class="card">
+            <div class="item item-divider">
+                <span">Join an existing group:</span>
+            </div>
             <form ng-submit="vm.save()" ng-show = vm.salvato name="form" role="form" novalidate show-validation>
                 <div class="modal-body">
-                    <div style="font-size: 1.5em; padding: 15px; font-weight: bold;">Join an existing group:</div>
-                    <div style="margin-top: 20px;" class="form-group">
+                    <div style="margin-top: 10px;" class="form-group">
                         <label class = "item item-input item-select">
                             <div class = "input-label">
                                Select a Study Group:

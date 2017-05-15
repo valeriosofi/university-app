@@ -1,0 +1,84 @@
+<ion-view view-title="Bookings">
+    <ion-content> 
+        
+        <div ng-show = vm.salvato class="card">
+            <div class="item item-divider">
+                <span>Select a date</span>
+            </div>
+            <div class="modal-body">
+                <jhi-alert-error></jhi-alert-error>
+            
+                <div class="list">
+                    <form name="form" role="form" novalidate ng-submit="vm.findRooms()" show-validation>
+
+                        <label class="item item-input">
+                            <span class="input-label">Date</span>
+                                <input type="date" name="date" uib-datepicker-popup="{{dateformat}}" ng-model="vm.booking.date" is-open="vm.datePickerOpenStatus.date">
+                        </label>
+
+                        <label class = "item item-input item-select">
+                                <div class = "input-label">
+                                   Time Slot:
+                                </div>
+
+                                <select class="form-control" id="field_timeSlot" name="timeSlot" ng-model="vm.booking.timeSlot">
+                                    <option value="8.30-10.00">8.30-10.00</option>
+                                    <option value="10.00-11.30">10.00-11.30</option>
+                                    <option value="11.30-13.00">11.30-13.00</option>
+                                    <option value="13.00-14.30">13.00-14.30</option>
+                                    <option value="14.30-16.00">14.30-16.00</option>
+                                    <option value="16.00-17.30">16.00-17.30</option>
+                                    <option value="17.30-19.00">17.30-19.00</option>
+                                </select>
+                        </label>
+
+                        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="button button-full button-positive">Find free rooms</button>
+                    </form>  
+                </div>
+            </div>
+        </div>
+        <div ng-show = vm.book class="card">
+            <div ng-show = vm.book class="item item-divider">
+                <span>List of free rooms:</span>
+            </div>
+            <table ng-show = vm.book style="margin: 5px;" class="jh-table table table-striped">
+                <thead style="font-size:1.2em; font-weight:bold;">
+                    <tr>
+                        <th><span>Room</span></th>
+                        <th><span>Capacity</span></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="room in vm.rooms track by room.id">
+                        <td><a ui-sref="course-detail({id:course.id})">Room {{room.id}}</a></td>
+                        <td>{{room.capacity}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div ng-show = vm.book class="card">
+        <div class="item item-divider">
+            <span>Book a room:</span>
+        </div>
+        <form ng-submit="vm.save()" name="form" role="form" novalidate show-validation>
+            <label class = "item item-input item-select">
+                <div class = "input-label">
+                   Room:
+                </div>
+
+                <select class="form-control" id="field_booked" name="booked" ng-model="vm.booking.room" ng-options="room as room.id for room in vm.rooms track by room.id">
+                    <option value=""></option>
+                </select>
+            </label>
+            <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="button button-full button-positive">Save</button>
+            <button type="submit" ng-click="vm.back()" class="button button-full button-positive">Back</button>
+        </form>
+        <div style="font-size: 1.5em" class="alert alert-success" ng-show=vm.avviso>
+            <div>Prenotazione effettuata!</div>
+        </div> 
+    </div>
+    
+    </ion-content>
+</ion-view>

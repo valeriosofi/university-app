@@ -55,7 +55,10 @@
                     <span>Courses</span>
                 </ion-item>
                 <ion-item ng-switch-when="true" menu-close ui-sref="studyGroup" has-authority="ROLE_STUDENT">
-                    <span>Create A Group</span>
+                    <span>Study Group</span>
+                </ion-item>
+                <ion-item ng-switch-when="true" menu-close ui-sref="booking" has-authority="ROLE_STUDENT">
+                    <span>Bookings</span>
                 </ion-item>
                 <ion-item ng-switch-when="true" menu-close ui-sref="addCourse" has-authority="ROLE_ADMOFFICE">
                     <span>Add Course</span>

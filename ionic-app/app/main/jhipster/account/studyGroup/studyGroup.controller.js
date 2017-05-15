@@ -25,7 +25,6 @@
         }
         function save () {
             vm.isSaving = true;
-            console.log(vm.student);
             addStudentService.update(vm.student, onSaveSuccess, onSaveError);
         }
 
