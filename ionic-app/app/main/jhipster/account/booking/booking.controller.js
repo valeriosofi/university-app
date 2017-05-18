@@ -41,7 +41,7 @@
         }
 
         function loadAll() {
-            roomService.query(function(result) {
+            roomService.query({timeSlot: vm.booking.timeSlot}, function(result) {
                 vm.rooms = result;
                 vm.searchQuery = null;
             });
