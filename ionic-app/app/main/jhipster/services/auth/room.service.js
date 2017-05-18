@@ -4,13 +4,13 @@
         .module('main')
         .factory('roomService', roomService);
 
-    roomService.$inject = ['$resource'];
+    roomService.$inject = ['$resource', 'DateUtils'];
 
-    function roomService ($resource) {
+    function roomService ($resource, DateUtils) {
         var resourceUrl =  'api/rooms/:id';
 
         return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', params: {'timeSlot':'@timeSlot', 'date':'2017-05-14'}, isArray: true},
+            'query': { method: 'GET', params: {'timeSlot':'@timeSlot', 'date':'@date'}, isArray: true},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

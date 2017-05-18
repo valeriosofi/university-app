@@ -5,9 +5,9 @@
         .module('main')
         .controller('bookingController', bookingController);
 
-    bookingController.$inject = ['$window', '$timeout', 'bookingService', 'addStudentService', 'roomService', 'entity'];
+    bookingController.$inject = ['$filter', '$window', '$timeout', 'bookingService', 'addStudentService', 'roomService', 'entity', 'DateUtils'];
 
-    function bookingController($window, $timeout, bookingService, addStudentService, roomService, entity) {
+    function bookingController($filter, $window, $timeout, bookingService, addStudentService, roomService, entity, DateUtils) {
         var vm = this;
 
         vm.rooms = [];
@@ -41,7 +41,8 @@
         }
 
         function loadAll() {
-            roomService.query({timeSlot: vm.booking.timeSlot}, function(result) {
+            var date = $filter('date')(vm.booking.date, "yyyy-MM-dd");
+            roomService.query({timeSlot: vm.booking.timeSlot, date: date}, function(result) {
                 vm.rooms = result;
                 vm.searchQuery = null;
             });
