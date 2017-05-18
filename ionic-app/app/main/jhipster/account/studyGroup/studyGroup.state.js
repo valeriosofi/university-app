@@ -28,7 +28,14 @@
                     $translatePartialLoader.addPart('studyGroup');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
-                }]
+                }],
+                 entity: function () {
+                    return {
+                        name: null,
+                        numMembers: null,
+                        id: null
+                    };
+                }
             }
         })
         .state('studyGroup.new', {

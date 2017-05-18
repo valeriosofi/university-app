@@ -24,18 +24,7 @@
                             The name is required.
                         </p>
                     </div>
-
-                    <label class="item item-input">
-                        <span class="input-label">Number of Members</span>
-                        <input name="numMembers" id="numMembers" placeholder="Enter the number of members" type="number" min="0" max="30" step="1" ng-model="vm.studyGroup.numMembers">
-                    </label>
-                    <div ng-show="form.nummembers.$dirty && form.numMembers.$invalid" class="text-center">
-                        <p style="color: red;" class="help-block"
-                           ng-show="form.numMembers.$error.required">
-                            The number of members is required.
-                        </p>
-                    </div>
-
+                    
                     <button type="submit" ng-click="vm.save()" ng-disabled="editForm.$invalid || vm.isSaving" class="button button-full button-positive">Save</button>
                     <button class="button button-full button-positive" ng-click="vm.clear()">Back</button>
                 </form>

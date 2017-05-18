@@ -23,6 +23,7 @@
 
         function save () {
             vm.isSaving = true;
+            vm.studyGroup.numMembers=0;
             if (vm.studyGroup.id !== null) {
                 studyGroupService.update(vm.studyGroup, onSaveSuccess, onSaveError);
             } else {
