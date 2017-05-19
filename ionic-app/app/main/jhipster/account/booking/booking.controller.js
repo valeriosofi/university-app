@@ -38,11 +38,12 @@
             loadAll();
             vm.book = true;
             vm.booking.studyGroup = vm.student.studyGroup;
+            console.log(vm.booking.studyGroup);
         }
 
         function loadAll() {
             var date = $filter('date')(vm.booking.date, "yyyy-MM-dd");
-            roomService.query({timeSlot: vm.booking.timeSlot, date: date}, function(result) {
+            roomService.query({timeSlot: vm.booking.timeSlot, date: date, numMembers: vm.student.studyGroup.numMembers}, function(result) {
                 vm.rooms = result;
                 vm.searchQuery = null;
             });

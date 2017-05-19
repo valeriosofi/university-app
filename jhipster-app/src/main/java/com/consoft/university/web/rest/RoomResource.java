@@ -83,9 +83,9 @@ public class RoomResource {
      */
     @GetMapping("/rooms")
     @Timed
-    public List<Room> getAllRooms(@RequestParam String timeSlot, @RequestParam LocalDate date) {
+    public List<Room> getAllRooms(@RequestParam String timeSlot, @RequestParam LocalDate date, @RequestParam Integer numMembers) {
         log.debug("REST request to get all Rooms");
-        return roomService.findAllFreeRooms(timeSlot, date);
+        return roomService.findAllFreeRooms(timeSlot, date, numMembers);
     }
 
     /**

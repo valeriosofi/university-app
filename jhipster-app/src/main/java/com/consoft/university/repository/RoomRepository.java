@@ -16,6 +16,7 @@ public interface RoomRepository extends JpaRepository<Room,Long> {
    @Query("select distinct room from Room room where room.id NOT IN "
             + "(select distinct booking.room from Booking booking where booking.timeSlot = :timeSlot AND booking.date = :date "
            + "AND (booking.course is not null OR (booking.studyGroup is not null AND "
-           + "booking.room.capacity <=(select SUM(booking2.studyGroup.numMembers) from Booking booking2 where booking2.room=booking.room AND booking2.timeSlot = :timeSlot AND booking2.date = :date ))))")
-    List<Room> findAllFreeRooms(@Param("timeSlot") String timeSlot, @Param("date") LocalDate date);
+           + "booking.room.capacity-:numMembers <(select SUM(booking2.studyGroup.numMembers) "
+           + "from Booking booking2 where booking2.room=booking.room AND booking2.timeSlot = :timeSlot AND booking2.date = :date ))))")
+    List<Room> findAllFreeRooms(@Param("timeSlot") String timeSlot, @Param("date") LocalDate date, @Param("numMembers") Integer numMembers);
 }

@@ -39,5 +39,5 @@ public interface RoomService {
      */
     void delete(Long id);
     
-    List<Room> findAllFreeRooms(String timeSlot, LocalDate date);
+    List<Room> findAllFreeRooms(String timeSlot, LocalDate date, Integer numMembers);
 }

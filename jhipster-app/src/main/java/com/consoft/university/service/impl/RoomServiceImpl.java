@@ -80,9 +80,9 @@ public class RoomServiceImpl implements RoomService{
     
     @Override
     @Transactional(readOnly = true)
-    public List<Room> findAllFreeRooms(String timeSlot, LocalDate date) {
+    public List<Room> findAllFreeRooms(String timeSlot, LocalDate date, Integer numMembers) {
         log.debug("Request to get all Rooms");
-        List<Room> result = roomRepository.findAllFreeRooms(timeSlot, date);
+        List<Room> result = roomRepository.findAllFreeRooms(timeSlot, date, numMembers);
 
         return result;
     }
