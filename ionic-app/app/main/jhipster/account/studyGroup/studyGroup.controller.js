@@ -29,7 +29,9 @@
         function save () {
             vm.isSaving = true;
             addStudentService.update(vm.student, onSaveSuccess, onSaveError);
-            num.numMembers = num.numMembers-1;
+            if(num.numMembers){
+                num.numMembers = num.numMembers-1;
+            }
             vm.student.studyGroup.numMembers = vm.student.studyGroup.numMembers + 1;
             studyGroupService.update(vm.student.studyGroup);
             studyGroupService.update(num);

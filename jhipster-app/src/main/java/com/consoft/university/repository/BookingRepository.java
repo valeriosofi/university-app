@@ -11,5 +11,4 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface BookingRepository extends JpaRepository<Booking,Long> {
-
 }
